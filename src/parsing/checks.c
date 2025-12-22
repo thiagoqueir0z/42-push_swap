@@ -30,7 +30,7 @@ int	is_numeric(char *str)
 	return (1);
 }
 
-int	check_duplicate(t_stack *stack, int n)
+int	ft_check_duplicate(t_stack *stack, int n)
 {
 	if (!stack)
 		return (0);
@@ -41,4 +41,11 @@ int	check_duplicate(t_stack *stack, int n)
 		stack = stack->next;
 	}
 	return (0);
+}
+
+int ft_check_limits(long n)
+{
+    if (n > INT_MAX || n < INT_MIN)
+        return (0);
+    return (1);
 }
