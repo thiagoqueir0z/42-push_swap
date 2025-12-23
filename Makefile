@@ -18,6 +18,7 @@ SRC         = $(SRC_DIR)/main.c \
               $(SRC_DIR)/parsing/checks.c \
               $(SRC_DIR)/parsing/utils.c \
               $(SRC_DIR)/stack/stack_utils.c \
+			  $(SRC_DIR)/stack/stack_free.c \
               $(SRC_DIR)/rules/rules_swap.c \
               $(SRC_DIR)/rules/rules_push.c \
               $(SRC_DIR)/rules/rules_rotate.c \
