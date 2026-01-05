@@ -1,39 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_free.c                                       :+:      :+:    :+:   */
+/*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thiferre <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/23 17:36:28 by thiferre          #+#    #+#             */
-/*   Updated: 2025/12/23 17:36:31 by thiferre         ###   ########.fr       */
+/*   Created: 2026/01/05 14:57:28 by thiferre          #+#    #+#             */
+/*   Updated: 2026/01/05 14:57:29 by thiferre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
 
-
-void	free_stack(t_stack **stack)
+static void free_args(char **args)
 {
-    t_stack *tmp;
-    t_stack *current;
-    
-    if(!stack || !(*stack))
+    int i;
+
+    i = 0;
+    if(!args)
         return ;
-    current = *stack;
-    while (current)
+    while(args[i])
     {
-        tmp = current->next;
-        free(current);
-        current = tmp;
+        free(args[i]);
+        i++;
     }
-    *stack = NULL;
-}
-
-void    error_exit(t_stack **stack)
-{
-    if(stack)
-        free_stack(stack);
-    write(2, "Error\n", 6);
-    exit(1);
+    free(args);
 }
