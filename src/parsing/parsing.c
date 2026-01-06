@@ -26,3 +26,39 @@ static void free_args(char **args)
     }
     free(args);
 }
+
+static void	process_args(char **args, t_stack **stack_a)
+{
+	long	n;
+	int		i;
+
+	i = 0;
+	while (args[i])
+	{
+		if (!is_numeric(args[i]))
+			error_exit(stack_a);
+		n = ft_atol(args[i]);
+		if (!ft_check_limits(n))
+			error_exit(stack_a);
+		if (check_duplicate(*stack_a, (int)n))
+			error_exit(stack_a);
+		stack_add_back(stack_a, stack_new((int)n));
+		i++;
+	}
+}
+
+void	parse_init(t_stack **stack_a, int argc, char **argv)
+{
+	char	**args;
+
+	if (argc == 2)
+	{
+		args = ft_split(argv[1], ' ');
+		if (!args)
+			error_exit(NULL);
+		process_args(args, stack_a);
+		free_args(args);
+	}
+	else
+		process_args(argv + 1, stack_a);
+}
