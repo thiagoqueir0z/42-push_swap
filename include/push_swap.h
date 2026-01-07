@@ -40,8 +40,17 @@ void	free_stack(t_stack **stack);
 void	error_exit(t_stack **stack);
 
 /* Rules */
-// void sa(t_stack **a, int print);
-// ... (Adicionar quando implementar as regras)
+void	sa(t_stack **a, int print);
+void	sb(t_stack **b, int print);
+void	ss(t_stack **a, t_stack **b, int print);
+void	pa(t_stack **a, t_stack **b, int print);
+void	pb(t_stack **b, t_stack **a, int print);
+void	ra(t_stack **a, int print);
+void	rb(t_stack **b, int print);
+void	rr(t_stack **a, t_stack **b, int print);
+void	rra(t_stack **a, int print);
+void	rrb(t_stack **b, int print);
+void	rrr(t_stack **a, t_stack **b, int print);
 
 /* Sort */
 // void sort_radix(t_stack **a, t_stack **b);
