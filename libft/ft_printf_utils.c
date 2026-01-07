@@ -1,25 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter_bonus.c                                 :+:      :+:    :+:   */
+/*   ft_printf_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thiferre <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/25 08:38:23 by thiferre          #+#    #+#             */
-/*   Updated: 2025/10/25 08:38:57 by thiferre         ###   ########.fr       */
+/*   Created: 2025/11/12 13:32:30 by thiferre          #+#    #+#             */
+/*   Updated: 2025/11/12 15:46:37 by thiferre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	ft_lstiter(t_list *lst, void (*f)(void *))
+int	ft_putchar(char c)
 {
-	if (lst && f)
+	return (write(1, &c, 1));
+}
+
+int	ft_putstr(char *str)
+{
+	int	len;
+
+	len = 0;
+	if (str == NULL)
 	{
-		while (lst)
-		{
-			f(lst->content);
-			lst = lst->next;
-		}
+		write(1, "(null)", 6);
+		return (6);
 	}
+	while (str[len])
+		len++;
+	write(1, str, len);
+	return (len);
 }

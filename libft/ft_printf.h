@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thiferre <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/25 08:38:05 by thiferre          #+#    #+#             */
-/*   Updated: 2025/10/25 08:38:10 by thiferre         ###   ########.fr       */
+/*   Created: 2025/11/11 13:57:23 by thiferre          #+#    #+#             */
+/*   Updated: 2025/11/12 15:50:17 by thiferre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-t_list	*ft_lstnew(void *content)
-{
-	t_list	*node;
+# include <unistd.h>
+# include <stdlib.h>
+# include <stdarg.h>
 
-	node = (t_list *)malloc(sizeof(t_list));
-	if (!node)
-		return (NULL);
-	node->content = content;
-	node->next = NULL;
-	return (node);
-}
+int	ft_printf(const char *format, ...);
+int	ft_putnbr(int n);
+int	ft_decimalprint(unsigned int nb);
+int	ft_hexprint(unsigned long int nb, int caseflag);
+int	ft_ptrprint(void *ptr);
+int	ft_putchar(char c);
+int	ft_putstr(char *str);
+
+#endif

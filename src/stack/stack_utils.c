@@ -37,7 +37,8 @@ t_stack *stack_last(t_stack *stack)
 void stack_add_back(t_stack **stack, t_stack *new)
 {
     t_stack *last;
-    if(!last)
+
+    if(!new)
         return ;
     if(!*stack)
     {

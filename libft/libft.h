@@ -16,19 +16,7 @@
 # include <unistd.h> // For write()
 # include <stdlib.h> // For malloc() and free()
 # include <stddef.h> // For size_t
-# include <limits.h> // For INT_MIN and INT_MAX 
-
-/*
-** ----------------------------------------------------------------------------
-** t_list Structure (Bonus)
-** ----------------------------------------------------------------------------
-*/
-
-typedef struct s_list
-{
-	void			*content;
-	struct s_list	*next;
-}					t_list;
+# include <limits.h> // For INT_MIN and INT_MAX
 
 /*
 ** ----------------------------------------------------------------------------
@@ -97,18 +85,16 @@ void	ft_putnbr_fd(int n, int fd);
 
 /*
 ** ----------------------------------------------------------------------------
-** Bonus: Linked List Functions
+** ft_printf
 ** ----------------------------------------------------------------------------
 */
 
-t_list	*ft_lstnew(void *content);
-void	ft_lstadd_front(t_list **lst, t_list *new);
-int		ft_lstsize(t_list *lst);
-t_list	*ft_lstlast(t_list *lst);
-void	ft_lstadd_back(t_list **lst, t_list *new);
-void	ft_lstdelone(t_list *lst, void (*del)(void *));
-void	ft_lstclear(t_list **lst, void (*del)(void *));
-void	ft_lstiter(t_list *lst, void (*f)(void *));
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+int	ft_printf(const char *format, ...);
+int	ft_putnbr(int n);
+int	ft_decimalprint(unsigned int nb);
+int	ft_hexprint(unsigned long int nb, int caseflag);
+int	ft_ptrprint(void *ptr);
+int	ft_putchar(char c);
+int	ft_putstr(char *str);
 
 #endif

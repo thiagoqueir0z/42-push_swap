@@ -16,6 +16,7 @@ SRC_DIR     = ./src
 
 SRC         = $(SRC_DIR)/main.c \
               $(SRC_DIR)/parsing/checks.c \
+			  $(SRC_DIR)/parsing/parsing.c \
               $(SRC_DIR)/parsing/utils.c \
               $(SRC_DIR)/stack/stack_utils.c \
 			  $(SRC_DIR)/stack/stack_free.c \

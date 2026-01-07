@@ -36,12 +36,16 @@ static void	process_args(char **args, t_stack **stack_a)
 	while (args[i])
 	{
 		if (!is_numeric(args[i]))
+		{
+			free_args(args);
 			error_exit(stack_a);
+		}	
 		n = ft_atol(args[i]);
-		if (!ft_check_limits(n))
+		if (!ft_check_limits(n) || ft_check_duplicate(*stack_a, (int)n))
+		{
+			free_args(args);
 			error_exit(stack_a);
-		if (check_duplicate(*stack_a, (int)n))
-			error_exit(stack_a);
+		}
 		stack_add_back(stack_a, stack_new((int)n));
 		i++;
 	}
@@ -50,15 +54,16 @@ static void	process_args(char **args, t_stack **stack_a)
 void	parse_init(t_stack **stack_a, int argc, char **argv)
 {
 	char	**args;
+	int	i;
 
-	if (argc == 2)
+	i = 1;
+	while (i < argc)
 	{
-		args = ft_split(argv[1], ' ');
+		args = ft_split(argv[i], ' ');
 		if (!args)
-			error_exit(NULL);
+			error_exit(stack_a);
 		process_args(args, stack_a);
 		free_args(args);
+		i++;
 	}
-	else
-		process_args(argv + 1, stack_a);
 }
