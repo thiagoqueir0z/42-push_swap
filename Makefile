@@ -9,6 +9,7 @@ CFLAGS      = -Wall -Wextra -Werror -g3
 LIBFT_DIR   = ./libft
 INC_DIR     = ./include
 SRC_DIR     = ./src
+OBJ_DIR     = ./obj_dir
 
 # ==============================================================================
 #                                 SOURCES & OBJECTS
@@ -16,10 +17,10 @@ SRC_DIR     = ./src
 
 SRC         = $(SRC_DIR)/main.c \
               $(SRC_DIR)/parsing/checks.c \
-			  $(SRC_DIR)/parsing/parsing.c \
+              $(SRC_DIR)/parsing/parsing.c \
               $(SRC_DIR)/parsing/utils.c \
               $(SRC_DIR)/stack/stack_utils.c \
-			  $(SRC_DIR)/stack/stack_free.c \
+              $(SRC_DIR)/stack/stack_free.c \
               $(SRC_DIR)/rules/rules_swap.c \
               $(SRC_DIR)/rules/rules_push.c \
               $(SRC_DIR)/rules/rules_rotate.c \
@@ -27,10 +28,9 @@ SRC         = $(SRC_DIR)/main.c \
               $(SRC_DIR)/sort/sort_tiny.c \
               $(SRC_DIR)/sort/sort_radix.c
 
-OBJ         = $(SRC:.c=.o)
+OBJ         = $(patsubst %.c, $(OBJ_DIR)/%.o, $(SRC))
 
 LIBFT       = $(LIBFT_DIR)/libft.a
-
 INCLUDES    = -I$(INC_DIR) -I$(LIBFT_DIR)
 
 # ==============================================================================
@@ -47,13 +47,14 @@ $(NAME): $(LIBFT) $(OBJ)
 	@echo "Linking $(NAME)..."
 	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -o $(NAME)
 
-%.o: %.c
+$(OBJ_DIR)/%.o: %.c
+	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
 	@echo "Cleaning objects..."
 	@make clean -C $(LIBFT_DIR)
-	rm -f $(OBJ)
+	rm -rf $(OBJ_DIR)
 
 fclean: clean
 	@echo "Full clean..."

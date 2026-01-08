@@ -1,6 +1,5 @@
 #include "../include/push_swap.h"
 
-// Função auxiliar para ver a lista
 void	print_stack(t_stack *stack)
 {
 	while (stack)
@@ -13,23 +12,19 @@ void	print_stack(t_stack *stack)
 
 int	main(int argc, char **argv)
 {
-	t_stack	*stack_a;
+	t_stack	*stack_a = NULL;
 
-	stack_a = NULL;
-	if (argc < 2)
-		return (0);
+	if (argc < 2) return (0);
 
 	parse_init(&stack_a, argc, argv);
 
-	ft_printf("Antes do SA: ");
+	ft_printf("Antes: ");
 	print_stack(stack_a);
 
-	// --- O TESTE ---
-	// Chama a função SA, e pede para imprimir ("1" = true)
-	sa(&stack_a, 1);
-	// ----------------
+	// TESTE: Rotate A
+	ra(&stack_a, 1);
 
-	ft_printf("Depois do SA: ");
+	ft_printf("Depois: ");
 	print_stack(stack_a);
 
 	free_stack(&stack_a);
