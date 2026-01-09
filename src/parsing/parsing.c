@@ -62,6 +62,11 @@ void	parse_init(t_stack **stack_a, int argc, char **argv)
 		args = ft_split(argv[i], ' ');
 		if (!args)
 			error_exit(stack_a);
+		if (!args[0])
+		{
+			free_args(args);
+			error_exit(stack_a);
+		}
 		process_args(args, stack_a);
 		free_args(args);
 		i++;
