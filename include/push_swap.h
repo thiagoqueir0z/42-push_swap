@@ -30,6 +30,7 @@ int		is_numeric(char *str);
 int		ft_check_duplicate(t_stack *stack, int n);
 int		ft_check_limits(long n);
 long	ft_atol(const char *str);
+void	index_stack(t_stack **stack);
 
 /* Stack Management */
 t_stack	*stack_new(int content);
@@ -53,6 +54,8 @@ void	rrb(t_stack **b, int print);
 void	rrr(t_stack **a, t_stack **b, int print);
 
 /* Sort */
-// void sort_radix(t_stack **a, t_stack **b);
+void	sort_three(t_stack **a);
+bool	is_sorted(t_stack *stack);
+void	sort_radix(t_stack **stack_a, t_stack **stack_b);
 
 #endif

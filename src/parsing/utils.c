@@ -36,3 +36,25 @@ long	ft_atol(const char *str)
 	}
 	return (result * sign);
 }
+
+void	index_stack(t_stack **stack)
+{
+	t_stack	*head;
+	t_stack	*next;
+	int		match;
+
+	head = *stack;
+	while (head)
+	{
+		match = 0;
+		next = *stack;
+		while (next)
+		{
+			if (head->value > next->value)
+				match++;
+			next = next->next;
+		}
+		head->index = match;
+		head = head->next;
+	}
+}
