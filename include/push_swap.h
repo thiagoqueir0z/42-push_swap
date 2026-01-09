@@ -57,5 +57,6 @@ void	rrr(t_stack **a, t_stack **b, int print);
 void	sort_three(t_stack **a);
 bool	is_sorted(t_stack *stack);
 void	sort_radix(t_stack **stack_a, t_stack **stack_b);
+void	sort_five(t_stack **a, t_stack **b)
 
 #endif
