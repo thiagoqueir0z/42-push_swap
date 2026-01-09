@@ -28,12 +28,12 @@ SRCS 	= ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c \
 SRCS_OBJS = $(SRCS:.c=.o)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 all: $(NAME)
 
 $(NAME): $(SRCS_OBJS)
-	$(AR) $(ARFLAGS) $(NAME) $(SRCS_OBJS)
+	@$(AR) $(ARFLAGS) $(NAME) $(SRCS_OBJS)
 
 clean:
 	@$(RM) $(SRCS_OBJS) $(OBJ_BONUS)

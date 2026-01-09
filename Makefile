@@ -58,12 +58,31 @@ $(LIBFT):
 	@make -C $(LIBFT_DIR) --no-print-directory
 
 $(NAME): $(LIBFT) $(OBJ)
-	@echo "$(B)$(GRN)Linking $(NAME)...$(D)"
-	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -o $(NAME)
+	@echo "$(B)$(GRN)Make done, evaluate me bitch $(NAME)...$(D)"
 
 $(OBJ_DIR)/%.o: %.c
 	@mkdir -p $(dir $@)
-	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
+tester:		## Run the tester script
+	@echo "   $(B)$(CYA)Running Push Swap Tester$(D)"
+	@curl https://raw.githubusercontent.com/hu8813/tester_push_swap/main/pstester.py | python3 -
+
+visualizer:
+	@echo "   $(B)$(CYA)Setting up Push Swap Visualizer$(D)"
+	@if [ ! -d "push_swap_visualizer" ]; then \
+		echo "   $(B)$(YEL)Cloning visualizer repository$(D) 💾💾"; \
+		git clone https://github.com/o-reo/push_swap_visualizer.git; \
+	else \
+		echo "   $(B)$(YEL)Visualizer repository already exists$(D)"; \
+	fi
+	@echo "   $(B)$(YEL)Building visualizer 🔨$(D)"
+	@mkdir -p push_swap_visualizer/build 
+	@cd push_swap_visualizer/build && cmake .. -DCMAKE_POLICY_VERSION_MINIMUM=3.5 && make
+	@echo "   $(B)$(GRN)Visualizer build complete$(D): $(_SUCCESS)"
+	@echo "   $(B)$(CYA)Running visualizer$(D)"
+	@cd push_swap_visualizer/build && ./bin/visualizer
 
 clean:
 	@echo "$(B)$(R)Cleaning objects...$(D)"
@@ -73,6 +92,7 @@ clean:
 fclean: clean
 	@echo "$(B)$(R)Full clean...$(D)"
 	@make fclean -C $(LIBFT_DIR) --no-print-directory
+	@rm -rf push_swap_visualizer
 	rm -f $(NAME)
 
 re: fclean all
