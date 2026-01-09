@@ -11,6 +11,19 @@ INC_DIR     = ./include
 SRC_DIR     = ./src
 OBJ_DIR     = ./obj_dir
 
+.DELETE_ON_ERROR:
+
+# ==============================================================================
+#                                     COLORS
+# ==============================================================================
+
+D           = \033[0m
+B           = \033[1m
+R           = \033[31m
+CYA         = \033[36m
+GRN         = \033[32m
+YEL         = \033[33m
+
 # ==============================================================================
 #                                 SOURCES & OBJECTS
 # ==============================================================================
@@ -26,6 +39,7 @@ SRC         = $(SRC_DIR)/main.c \
               $(SRC_DIR)/rules/rules_rotate.c \
               $(SRC_DIR)/rules/rules_rrotate.c \
               $(SRC_DIR)/sort/sort_tiny.c \
+              $(SRC_DIR)/sort/sort_five.c \
               $(SRC_DIR)/sort/sort_radix.c
 
 OBJ         = $(patsubst %.c, $(OBJ_DIR)/%.o, $(SRC))
@@ -40,11 +54,11 @@ INCLUDES    = -I$(INC_DIR) -I$(LIBFT_DIR)
 all: $(NAME)
 
 $(LIBFT):
-	@echo "Compiling Libft..."
-	@make -C $(LIBFT_DIR)
+	@echo "$(B)$(CYA)Compiling Libft...$(D)"
+	@make -C $(LIBFT_DIR) --no-print-directory
 
 $(NAME): $(LIBFT) $(OBJ)
-	@echo "Linking $(NAME)..."
+	@echo "$(B)$(GRN)Linking $(NAME)...$(D)"
 	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -o $(NAME)
 
 $(OBJ_DIR)/%.o: %.c
@@ -52,13 +66,13 @@ $(OBJ_DIR)/%.o: %.c
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
-	@echo "Cleaning objects..."
-	@make clean -C $(LIBFT_DIR)
+	@echo "$(B)$(R)Cleaning objects...$(D)"
+	@make clean -C $(LIBFT_DIR) --no-print-directory
 	rm -rf $(OBJ_DIR)
 
 fclean: clean
-	@echo "Full clean..."
-	@make fclean -C $(LIBFT_DIR)
+	@echo "$(B)$(R)Full clean...$(D)"
+	@make fclean -C $(LIBFT_DIR) --no-print-directory
 	rm -f $(NAME)
 
 re: fclean all

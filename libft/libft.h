@@ -6,7 +6,7 @@
 /*   By: thiferre <thiferre@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 12:48:22 by thiferre          #+#    #+#             */
-/*   Updated: 2025/10/25 09:11:06 by thiferre         ###   ########.fr       */
+/*   Updated: 2026/01/09 16:59:01 by thiferre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ int		ft_atoi(const char *nptr); // Conversion remains here
 
 void	*ft_calloc(size_t nmemb, size_t size);
 char	*ft_strdup(const char *s);
-
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s1, char const *set);
@@ -89,12 +88,12 @@ void	ft_putnbr_fd(int n, int fd);
 ** ----------------------------------------------------------------------------
 */
 
-int	ft_printf(const char *format, ...);
-int	ft_putnbr(int n);
-int	ft_decimalprint(unsigned int nb);
-int	ft_hexprint(unsigned long int nb, int caseflag);
-int	ft_ptrprint(void *ptr);
-int	ft_putchar(char c);
-int	ft_putstr(char *str);
+int		ft_printf(const char *format, ...);
+int		ft_putnbr(int n);
+int		ft_decimalprint(unsigned int nb);
+int		ft_hexprint(unsigned long int nb, int caseflag);
+int		ft_ptrprint(void *ptr);
+int		ft_putchar(char c);
+int		ft_putstr(char *str);
 
 #endif

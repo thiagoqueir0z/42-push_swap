@@ -6,7 +6,7 @@
 /*   By: thiferre <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 12:06:05 by thiferre          #+#    #+#             */
-/*   Updated: 2026/01/09 12:06:08 by thiferre         ###   ########.fr       */
+/*   Updated: 2026/01/09 15:40:51 by thiferre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,31 +34,25 @@ static int	get_max_bits(t_stack **stack)
 
 void	sort_radix(t_stack **stack_a, t_stack **stack_b)
 {
-	t_stack	*head_a;
-	int		i;
-	int		j;
-	int		size;
-	int		max_bits;
+	int	bits;
+	int	i;
+	int	size;
+	int	max_bits;
 
-	i = 0;
-	head_a = *stack_a;
-	size = stack_size(head_a);
+	bits = -1;
+	size = stack_size(*stack_a);
 	max_bits = get_max_bits(stack_a);
-	
-	while (i < max_bits)
+	while (!is_sorted(*stack_a) && ++bits < max_bits)
 	{
-		j = 0;
-		while (j < size)
+		i = -1;
+		while (++i < size)
 		{
-			head_a = *stack_a;
-			if (((head_a->index >> i) & 1) == 1)
+			if ((((*stack_a)->index >> bits) & 1))
 				ra(stack_a, 1);
 			else
 				pb(stack_b, stack_a, 1);
-			j++;
 		}
-		while (stack_size(*stack_b) != 0)
+		while (*stack_b)
 			pa(stack_a, stack_b, 1);
-		i++;
 	}
 }

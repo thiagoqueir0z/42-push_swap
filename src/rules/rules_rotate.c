@@ -6,7 +6,7 @@
 /*   By: thiferre <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 15:23:44 by thiferre          #+#    #+#             */
-/*   Updated: 2026/01/08 15:46:11 by thiferre         ###   ########.fr       */
+/*   Updated: 2026/01/09 15:29:29 by thiferre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ void	ra(t_stack **a, int print)
 		ft_printf("ra\n");
 }
 
-void    rb(t_stack **b, int print)
+void	rb(t_stack **b, int print)
 {
-        rotate(b);
-        if (print)
+	rotate(b);
+	if (print)
 		ft_printf("rb\n");
 }
 

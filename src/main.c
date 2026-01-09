@@ -20,7 +20,7 @@ int	main(int argc, char **argv)
 		free_stack(&stack_a);
 		return (0);
 	}
-	
+
 	// 3. Indexação (CRUCIAL para sort_five e sort_radix)
 	// Deve ser feita ANTES de escolher o algoritmo
 	index_stack(&stack_a);

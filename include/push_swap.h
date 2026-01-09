@@ -6,7 +6,7 @@
 /*   By: thiferre <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/13 17:10:11 by thiferre          #+#    #+#             */
-/*   Updated: 2025/12/13 17:10:14 by thiferre         ###   ########.fr       */
+/*   Updated: 2026/01/09 16:54:56 by thiferre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,6 @@ void	rrr(t_stack **a, t_stack **b, int print);
 void	sort_three(t_stack **a);
 bool	is_sorted(t_stack *stack);
 void	sort_radix(t_stack **stack_a, t_stack **stack_b);
-void	sort_five(t_stack **a, t_stack **b)
+void	sort_five(t_stack **a, t_stack **b);
 
 #endif

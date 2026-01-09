@@ -6,7 +6,7 @@
 /*   By: thiferre <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/13 17:13:11 by thiferre          #+#    #+#             */
-/*   Updated: 2025/12/13 17:13:14 by thiferre         ###   ########.fr       */
+/*   Updated: 2026/01/09 15:09:57 by thiferre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ int	ft_check_duplicate(t_stack *stack, int n)
 	return (0);
 }
 
-int ft_check_limits(long n)
+int	ft_check_limits(long n)
 {
-    if (n > INT_MAX || n < INT_MIN)
-        return (0);
-    return (1);
+	if (n > INT_MAX || n < INT_MIN)
+		return (0);
+	return (1);
 }
