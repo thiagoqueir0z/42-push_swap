@@ -59,7 +59,7 @@ $(LIBFT):
 
 $(NAME): $(LIBFT) $(OBJ)
 	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -o $(NAME)
-	@echo "$(B)$(GRN)Make done, evaluate me bitch $(NAME)...$(D)"
+	@echo "$(B)$(GRN)Make done, evaluate me $(NAME)...$(D)"
 
 $(OBJ_DIR)/%.o: %.c
 	@mkdir -p $(dir $@)
